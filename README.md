@@ -1,4 +1,4 @@
-# Watchlist Filter
+# TradingView Watchlist Filter
 
 A lightweight Python script to filter your newest TradingView watchlist by removing any symbols that appear in older watchlist files from the same folder.
 
