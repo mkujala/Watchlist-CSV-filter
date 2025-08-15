@@ -205,6 +205,7 @@ def main():
     if not args.no_print:
         print("\n=== ONE-LINE IMPORT STRING ===")
         print(",".join(filtered))
+        print()
 
     if not args.keep_latest:
         try:
