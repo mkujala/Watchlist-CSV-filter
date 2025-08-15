@@ -21,3 +21,8 @@ env/
 
 # Test cache
 .pytest_cache/
+
+# Temporary / misc
+*.tmp
+*.bak
+*.swp
