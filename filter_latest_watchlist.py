@@ -113,10 +113,10 @@ def filter_symbols(latest_syms: list[str], seen: set[str]) -> list[str]:
 
 def safe_write_one_line(path: Path, symbols: list[str]) -> Path:
     """
-    Safely write the filtered symbols to <stem>_filtered.csv in one line.
+    Safely write the filtered symbols to <stem>_filtered.txt in one line.
     Uses a temporary file and replaces the final output atomically.
     """
-    out_path = path.with_name(path.stem + "_filtered.csv")
+    out_path = path.with_name(path.stem + "_filtered.txt")
     one_line = ",".join(symbols)
     # Create temporary file in same directory
     with tempfile.NamedTemporaryFile("w", delete=False, encoding="utf-8", dir=str(path.parent)) as tf:
