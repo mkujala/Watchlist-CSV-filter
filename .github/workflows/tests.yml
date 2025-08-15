@@ -22,7 +22,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-          cache: "pip"
+
+      - name: Show Python info
+        run: |
+          python -V
+          which python || where python
 
       - name: Install test deps
         run: |
@@ -30,4 +34,5 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest -q
+        run: |
+          pytest -q
