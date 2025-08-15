@@ -1,4 +1,3 @@
-# tests/test_filter_latest_watchlist.py
 import os
 import sys
 import subprocess
@@ -6,6 +5,7 @@ from pathlib import Path
 import time
 
 def write(p: Path, content: str):
+    """Helper function to write text content to a file."""
     p.write_text(content, encoding="utf-8")
 
 def test_filters_newest_against_older_files(tmp_path: Path):
@@ -19,6 +19,7 @@ def test_filters_newest_against_older_files(tmp_path: Path):
       - newest_filtered.csv contains only symbols not in older files,
         preserving order: NASDAQ:GOOGL,NASDAQ:META
       - stdout contains ONE-LINE IMPORT STRING with same content.
+      - newest.csv is deleted after processing (default behavior in v1.3+).
     """
     repo_root = Path(__file__).resolve().parents[1]
     script = repo_root / "filter_latest_watchlist.py"
@@ -57,3 +58,6 @@ def test_filters_newest_against_older_files(tmp_path: Path):
     stdout = result.stdout
     assert "ONE-LINE IMPORT STRING" in stdout
     assert "NASDAQ:GOOGL,NASDAQ:META" in stdout
+
+    # Check that newest file was deleted
+    assert not newest.exists(), "Newest source file should be deleted by default"
