@@ -1,5 +1,8 @@
 # TradingView Watchlist Filter
 
+[![Tests](https://github.com/mkujala/Watchlist-CSV-filter/actions/workflows/tests.yml/badge.svg)](https://github.com/mkujala/Watchlist-CSV-filter/actions/workflows/tests.yml)
+
+
 A lightweight Python script to filter your newest TradingView watchlist by removing any symbols that appear in older watchlist files from the same folder — or to **combine** all lists into one de‑duplicated file.
 
 ## Features
