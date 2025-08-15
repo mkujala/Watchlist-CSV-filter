@@ -16,7 +16,7 @@ def test_filters_newest_against_older_files(tmp_path: Path):
       - newest.csv  (symbols: NASDAQ:AAPL,NASDAQ:GOOGL,NASDAQ:AMZN,NASDAQ:META)
 
     Expect:
-      - newest_filtered.csv contains only symbols not in older files,
+      - newest_filtered.txt contains only symbols not in older files,
         preserving order: NASDAQ:GOOGL,NASDAQ:META
       - stdout contains ONE-LINE IMPORT STRING with same content.
       - newest.csv is deleted after processing (default behavior in v1.3+).
@@ -49,7 +49,7 @@ def test_filters_newest_against_older_files(tmp_path: Path):
     )
 
     # Check output file
-    out_file = tmp_path / "newest_filtered.csv"
+    out_file = tmp_path / "newest_filtered.txt"
     assert out_file.exists(), "Filtered output file not created."
     content = out_file.read_text(encoding="utf-8")
     assert content == "NASDAQ:GOOGL,NASDAQ:META", f"Unexpected filtered content: {content}"
